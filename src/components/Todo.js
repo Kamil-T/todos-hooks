@@ -12,7 +12,7 @@ const Todo = ({ id, task, completed, removeTodo, toggleTodo, editTodo }) => {
         <div>
           <input
             type='checkbox'
-            checked={completed}
+            defaultChecked={completed}
             onClick={() => toggleTodo(id)}
           />
           {task}

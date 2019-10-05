@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
 import uuid from 'uuid/v4'
 
 const TodoApp = () => {
-  const initialTodos = []
+  const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || []
 
   const [todos, setTodos] = useState(initialTodos)
+
+  useEffect(() => {
+    window.localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+
   const addTodo = newTodoText => {
     setTodos([
       ...todos,
