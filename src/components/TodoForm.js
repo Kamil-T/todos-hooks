@@ -11,7 +11,13 @@ const TodoForm = ({ addTodo }) => {
           addTodo(text)
           reset()
         }}>
-        <input type='text' value={text} onChange={update} />
+        <input
+          placeholder='Add New Todo'
+          type='text'
+          value={text}
+          onChange={update}
+          autoFocus
+        />
       </form>
     </>
   )
