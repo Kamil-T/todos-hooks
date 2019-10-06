@@ -3,7 +3,7 @@ import Todo from './Todo'
 import { TodosContext } from '../contexts/TodosContext'
 
 const TodoList = () => {
-  const { todos } = useContext(TodosContext)
+  const todos = useContext(TodosContext)
 
   return (
     <div>

@@ -1,17 +1,16 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import useInputState from '../hooks/useInputState'
-import { TodosContext } from '../contexts/TodosContext'
-
+import { DispatchContext } from '../contexts/TodosContext'
 
 const TodoForm = () => {
   const [text, update, reset] = useInputState('')
-  const {addTodo} = useContext(TodosContext)
+  const dispatch = useContext(DispatchContext)
   return (
     <>
       <form
         onSubmit={e => {
           e.preventDefault()
-          addTodo(text)
+          dispatch({ type: 'ADD', task: text })
           reset()
         }}>
         <input

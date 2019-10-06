@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import useToggle from '../hooks/useToggle'
 import EditTodoForm from './EditTodoForm'
-import { TodosContext } from '../contexts/TodosContext'
+import { DispatchContext } from '../contexts/TodosContext'
 
 const Todo = ({ id, task, completed }) => {
-  const { removeTodo, toggleTodo } = useContext(TodosContext)
+  const dispatch = useContext(DispatchContext)
   const [isEditing, toggle] = useToggle()
   return (
     <>
@@ -15,10 +15,12 @@ const Todo = ({ id, task, completed }) => {
           <input
             type='checkbox'
             defaultChecked={completed}
-            onClick={() => toggleTodo(id)}
+            onClick={() => dispatch({ type: 'TOGGLE', id: id })}
           />
           {task}
-          <button onClick={() => removeTodo(id)}>X</button>
+          <button onClick={() => dispatch({ type: 'REMOVE', id: id })}>
+            X
+          </button>
           <button onClick={toggle}>Edit</button>
         </div>
       )}
