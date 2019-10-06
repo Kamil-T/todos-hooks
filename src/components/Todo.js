@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import useToggle from '../hooks/useToggle'
 import EditTodoForm from './EditTodoForm'
+import { TodosContext } from '../contexts/TodosContext'
 
-const Todo = ({ id, task, completed, removeTodo, toggleTodo, editTodo }) => {
+const Todo = ({ id, task, completed }) => {
+  const { removeTodo, toggleTodo } = useContext(TodosContext)
   const [isEditing, toggle] = useToggle()
   return (
     <>
       {isEditing ? (
-        <EditTodoForm id={id} task={task} editTodo={editTodo} toggle={toggle} />
+        <EditTodoForm id={id} task={task} toggle={toggle} />
       ) : (
         <div>
           <input

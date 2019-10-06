@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import useInputState from '../hooks/useInputState'
+import { TodosContext } from '../contexts/TodosContext'
 
-const EditTodoForm = ({ id, task, editTodo, toggle }) => {
+const EditTodoForm = ({ id, task, toggle }) => {
+  const { editTodo } = useContext(TodosContext)
   const [text, update, reset] = useInputState(task)
 
   return (
